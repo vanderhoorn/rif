@@ -5,13 +5,15 @@ module Rif
     class ConsoleRunner
       include Readline
 
+      PROMPT = '> '
+
       def initialize(game)
         @game = game
       end
 
       def run
         present
-        while cmd = readline('> ')
+        while cmd = readline(PROMPT)
           break if cmd == 'quit'
           response = @game.handle_input(cmd)
           unless response.empty?
